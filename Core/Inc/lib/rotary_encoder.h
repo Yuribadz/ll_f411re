@@ -1,0 +1,68 @@
+/*
+ * rotary_encoder.h
+ *
+ *  Created on: Jun 9, 2022
+ *      Author: yurib
+ */
+
+#ifndef INC_LIB_ROTARY_ENCODER_H_
+#define INC_LIB_ROTARY_ENCODER_H_
+#include "main.h"
+#include "rotary_encoder_config.h"
+
+uint8_t rotary_encoder_init(void)
+{
+	  /* USER CODE BEGIN TIM4_Init 0 */
+
+	  /* USER CODE END TIM4_Init 0 */
+
+	  LL_TIM_InitTypeDef TIM_InitStruct = {0};
+
+	  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	  /* Peripheral clock enable */
+	  LL_APB1_GRP1_EnableClock(ROTARY_ENCODER_TIM_CLOCK);
+
+	  LL_AHB1_GRP1_EnableClock(ROTARY_ENCODER_GPIO_CLOCK);
+	  /**TIM4 GPIO Configuration
+	  PB6   ------> TIM4_CH1
+	  PB7   ------> TIM4_CH2
+	  */
+	  GPIO_InitStruct.Pin = ROTARY_ENCODER_TIM_CHANNEL1|ROTARY_ENCODER_TIM_CHANNEL2;
+	  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+	  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+	  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+	  GPIO_InitStruct.Alternate = LL_GPIO_AF_2;
+	  LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	  /* TIM4 interrupt Init */
+	  NVIC_SetPriority(ROTARY_ENCODER_TIM_IRQ, ROTARY_ENCODER_PRIORITYGROUPING);
+	  NVIC_EnableIRQ(ROTARY_ENCODER_TIM_IRQ);
+
+	  /* USER CODE BEGIN TIM4_Init 1 */
+
+	  /* USER CODE END TIM4_Init 1 */
+	  LL_TIM_SetEncoderMode(ROTARY_ENCODER_TIMER, LL_TIM_ENCODERMODE_X4_TI12);
+	  LL_TIM_IC_SetActiveInput(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH1, LL_TIM_ACTIVEINPUT_DIRECTTI);
+	  LL_TIM_IC_SetPrescaler(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH1, LL_TIM_ICPSC_DIV1);
+	  LL_TIM_IC_SetFilter(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH1, LL_TIM_IC_FILTER_FDIV1);
+	  LL_TIM_IC_SetPolarity(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH1, LL_TIM_IC_POLARITY_FALLING);
+	  LL_TIM_IC_SetActiveInput(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH2, LL_TIM_ACTIVEINPUT_DIRECTTI);
+	  LL_TIM_IC_SetPrescaler(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH2, LL_TIM_ICPSC_DIV1);
+	  LL_TIM_IC_SetFilter(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH2, LL_TIM_IC_FILTER_FDIV1);
+	  LL_TIM_IC_SetPolarity(ROTARY_ENCODER_TIMER, LL_TIM_CHANNEL_CH2, LL_TIM_IC_POLARITY_FALLING);
+	  TIM_InitStruct.Prescaler = 0;
+	  TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
+	  TIM_InitStruct.Autoreload = 65535;
+	  TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
+	  LL_TIM_Init(ROTARY_ENCODER_TIMER, &TIM_InitStruct);
+	  LL_TIM_DisableARRPreload(ROTARY_ENCODER_TIMER);
+	  LL_TIM_SetTriggerOutput(ROTARY_ENCODER_TIMER, LL_TIM_TRGO_RESET);
+	  LL_TIM_DisableMasterSlaveMode(ROTARY_ENCODER_TIMER);
+	  /* USER CODE BEGIN TIM4_Init 2 */
+
+	  /* USER CODE END TIM4_Init 2 */
+}
+
+#endif /* INC_LIB_ROTARY_ENCODER_H_ */

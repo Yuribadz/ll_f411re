@@ -7,6 +7,8 @@
 
 #include "tasks.h"
 #include <stdio.h>
+#include "generic_led.h"
+
 /* Definitions for rotaryUpdate */
 osThreadId_t rotaryUpdateHandle;
 uint32_t rotaryUpdateBuffer[ 128 ];

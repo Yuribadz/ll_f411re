@@ -5,13 +5,11 @@
  *      Author: yurib
  */
 #include "init.h"
-#include "cmsis_os.h"
-#include "clock_config.h"
-#include "dma_config.h"
-#include "gpio_config.h"
-#include "usart_config.h"
-#include "tim4_config.h"
-#include "tasks.h"
+
+
+device_config_t* devices[] = {
+		&button, &leds
+};
 
 
 
@@ -21,11 +19,14 @@ uint8_t init(void) {
 	//HAL_Init();
 
 	SystemClock_Config();
-	GPIO_Init();
+	for(uint8_t i = 0; i < 2; ++i)
+	{
+		devices[i]->init_Device();
+	}
+
 	DMA_Init();
 	USART2_UART_Init();
 	TIM4_Init();
-	LL_TIM_EnableCounter(TIM4);
 	osKernelInitialize();
 	rotaryUpdateHandle = osThreadNew(rotaryUpdateTask, NULL, &rotaryUpdate_attributes);
 	/* creation of display */

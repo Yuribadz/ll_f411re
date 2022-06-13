@@ -12,8 +12,6 @@
 
 #include "clock_config.h"
 
-
-
 void SystemClock_Config(void) {
 	LL_FLASH_SetLatency(LL_FLASH_LATENCY_2);
 	while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_2) {
@@ -27,7 +25,7 @@ void SystemClock_Config(void) {
 
 	}
 	LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_16, 336,
-			LL_RCC_PLLP_DIV_4);
+	LL_RCC_PLLP_DIV_4);
 	LL_RCC_PLL_Enable();
 
 	/* Wait till PLL is ready */
@@ -50,4 +48,10 @@ void SystemClock_Config(void) {
 		Error_Handler();
 	}
 	LL_RCC_SetTIMPrescaler(LL_RCC_TIM_PRESCALER_TWICE);
+	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
+	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOH);
+	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
+
 }

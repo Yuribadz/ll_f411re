@@ -63,7 +63,7 @@ void TIM4_Init(void)
   LL_TIM_SetTriggerOutput(TIM4, LL_TIM_TRGO_RESET);
   LL_TIM_DisableMasterSlaveMode(TIM4);
   /* USER CODE BEGIN TIM4_Init 2 */
-
+  LL_TIM_EnableCounter(TIM4);
   /* USER CODE END TIM4_Init 2 */
 
 }

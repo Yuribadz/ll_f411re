@@ -40,6 +40,7 @@ extern "C" {
 #include "stm32f4xx_ll_tim.h"
 #include "stm32f4xx_ll_usart.h"
 #include "stm32f4xx_ll_gpio.h"
+#include "stdbool.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -69,21 +70,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define B1_Pin LL_GPIO_PIN_13
-#define B1_GPIO_Port GPIOC
-#define B1_EXTI_IRQn EXTI15_10_IRQn
 #define USART_TX_Pin LL_GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin LL_GPIO_PIN_3
 #define USART_RX_GPIO_Port GPIOA
-#define LD1_Pin LL_GPIO_PIN_5
-#define LD1_GPIO_Port GPIOA
-#define LD4_Pin LL_GPIO_PIN_5
-#define LD4_GPIO_Port GPIOC
-#define LD3_Pin LL_GPIO_PIN_8
-#define LD3_GPIO_Port GPIOC
-#define LD2_Pin LL_GPIO_PIN_9
-#define LD2_GPIO_Port GPIOC
 #define TMS_Pin LL_GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin LL_GPIO_PIN_14

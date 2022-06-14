@@ -11,14 +11,15 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "clock_config.h"
-#include "dma_config.h"
-#include "usart_config.h"
 #include "tim4_config.h"
 #include "tasks.h"
 #include "device_config.h"
 #include "generic_button.h"
 #include "generic_led.h"
-extern device_config_t* devices[];
+#include "debug_usart.h"
+
+#define DEVICES_NUM 3U
+extern device_config_t* devices[DEVICES_NUM];
 
 uint8_t init(void);
 

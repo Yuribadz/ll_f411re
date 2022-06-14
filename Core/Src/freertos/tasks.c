@@ -8,6 +8,7 @@
 #include "tasks.h"
 #include <stdio.h>
 #include "generic_led.h"
+#include "debug_usart.h"
 
 /* Definitions for rotaryUpdate */
 osThreadId_t rotaryUpdateHandle;
@@ -47,7 +48,7 @@ const osThreadAttr_t esp_attributes = {
 };
 /* Definitions for output */
 osThreadId_t outputHandle;
-uint32_t outputBuffer[ 64 ];
+uint32_t outputBuffer[ 128 ];
 osStaticThreadDef_t outputControlBlock;
 const osThreadAttr_t output_attributes = {
   .name = "output",
@@ -72,7 +73,7 @@ void rotaryUpdateTask(void *argument) {
 	for (;;) {
 		count = LL_TIM_GetCounter(TIM4);
 		snprintf(buffer, 100,  "Count = %lu\r\n", count);
-		SEND_DBG_MSG(buffer);
+		debug_send_msg(buffer);
 		osDelay(1000U);
 		LL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 
@@ -130,8 +131,8 @@ void outputTask(void *argument) {
 					"that Pierrot, and have merely been takken in over this affair, just as they have.\r\n"
 					"";
 	for (;;) {
-		SEND_DBG_MSG(long_string);
-		SEND_DBG_MSG("press f to pay respects\r\n");
+		DEBUG_PRINT(long_string);
+		DEBUG_PRINT("press f to pay respects\r\n");
 		osDelay(1000U);
 		LL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
 

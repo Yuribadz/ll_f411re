@@ -9,7 +9,7 @@ void usart_send_string(DMA_TypeDef *Dma, uint32_t Stream, volatile size_t* usart
 
 	if (lwrb_get_free(usart_tx_buff) >= len) {
 		lwrb_write(usart_tx_buff, str, len);
-		usart_start_tx_dma_transfer(Dma, Stream, usart_tx_dma_current_len, usart_tx_buff);
+		usart_start_tx_dma_transfer(Dma, Stream, usart_tx_dma_current_len , usart_tx_buff);
 	}
 }
 /**
@@ -51,8 +51,8 @@ uint8_t usart_start_tx_dma_transfer(DMA_TypeDef *Dma, uint32_t Stream, volatile 
 	if (*usart_tx_dma_current_len == 0 && (*usart_tx_dma_current_len =
 			lwrb_get_linear_block_read_length(usart_tx_buff)) > 0) {
 		/* Limit maximal size to transmit at a time */
-		if (*usart_tx_dma_current_len > 32) {
-			*usart_tx_dma_current_len = 32;
+		if (*usart_tx_dma_current_len > 64) {
+			*usart_tx_dma_current_len = 64;
 		}
 
 		/* Configure DMA */
@@ -75,25 +75,3 @@ uint8_t usart_start_tx_dma_transfer(DMA_TypeDef *Dma, uint32_t Stream, volatile 
 	return started;
 }
 
-///**
-// * \brief           USART DMA check thread
-// * \param[in]       arg: Thread argument
-// */
-//void usart_rx_dma_thread(void *arg) {
-//	void *d;
-//	usart_rx_dma_queue_id = *(osMessageQueueId_t*) arg;
-//	/* Notify user to start sending data */
-//	usart_send_string(
-//			"USART DMA example: DMA HT & TC + USART IDLE LINE IRQ + RTOS processing\r\n");
-//	usart_send_string("Start sending data to STM32\r\n");
-//
-//	while (1) {
-//		/* Block thread and wait for event to process USART data */
-//		osMessageQueueGet(usart_rx_dma_queue_id, &d, NULL, osWaitForever);
-//
-//		/* Simply call processing function */
-//		usart_rx_check();
-//
-//		(void) d;
-//	}
-//}

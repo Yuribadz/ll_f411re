@@ -7,8 +7,8 @@
 #include "init.h"
 
 
-device_config_t* devices[] = {
-		&button, &leds
+device_config_t* devices[DEVICES_NUM] = {
+		&button, &leds, &debug_usart
 };
 
 
@@ -19,13 +19,10 @@ uint8_t init(void) {
 	//HAL_Init();
 
 	SystemClock_Config();
-	for(uint8_t i = 0; i < 2; ++i)
+	for(uint8_t i = 0; i < DEVICES_NUM; ++i)
 	{
 		devices[i]->init_Device();
 	}
-
-	DMA_Init();
-	USART2_UART_Init();
 	TIM4_Init();
 	osKernelInitialize();
 	rotaryUpdateHandle = osThreadNew(rotaryUpdateTask, NULL, &rotaryUpdate_attributes);

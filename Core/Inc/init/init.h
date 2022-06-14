@@ -13,6 +13,8 @@
 #include "clock_config.h"
 #include "tim4_config.h"
 #include "tasks.h"
+
+// Devices
 #include "device_config.h"
 #include "generic_button.h"
 #include "generic_led.h"

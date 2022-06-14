@@ -9,7 +9,7 @@
 
 lwrb_t usart2_tx_buff;
 uint8_t usart2_tx_buff_data[1024];
-volatile size_t usart2_tx_dma_current_len;
+volatile size_t usart2_tx_dma_current_len = 0;
 
 //static osMessageQueueId_t usart_rx_dma_queue_id;
 

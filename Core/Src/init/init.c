@@ -17,8 +17,9 @@ uint8_t init(void) {
 
 	uint8_t ret = 0U;
 	//HAL_Init();
-
 	SystemClock_Config();
+//	SEGGER_SYSVIEW_Conf();
+//	SEGGER_SYSVIEW_Start();
 	for(uint8_t i = 0; i < DEVICES_NUM; ++i)
 	{
 		devices[i]->init_Device();

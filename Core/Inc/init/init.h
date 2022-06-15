@@ -19,8 +19,9 @@
 #include "generic_button.h"
 #include "generic_led.h"
 #include "debug_usart.h"
+#include "iic1_device.h"
 
-#define DEVICES_NUM 3U
+#define DEVICES_NUM 4U
 extern device_config_t* devices[DEVICES_NUM];
 
 uint8_t init(void);

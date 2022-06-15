@@ -154,11 +154,3 @@ void DMA1_Stream6_IRQHandler(void)
         usart_start_tx_dma_transfer(DMA1, LL_DMA_STREAM_6, &usart2_tx_dma_current_len, &usart2_tx_buff);
     }
 }
-
-/**
-  * @brief This function handles DMA1 stream5 global interrupt.
-  */
-void DMA1_Stream5_IRQHandler(void)
-{
-}
-

@@ -42,11 +42,8 @@ void SystemClock_Config(void) {
 
 	}
 	LL_SetSystemCoreClock(84000000);
+	SysTick_Config(84000000 / 1000);
 
-	/* Update the time base */
-	if (HAL_InitTick(TICK_INT_PRIORITY) != HAL_OK) {
-		Error_Handler();
-	}
 	LL_RCC_SetTIMPrescaler(LL_RCC_TIM_PRESCALER_TWICE);
 	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
 	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOH);

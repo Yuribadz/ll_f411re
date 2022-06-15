@@ -27,7 +27,6 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
 
 #include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_rcc.h"
@@ -40,6 +39,7 @@ extern "C" {
 #include "stm32f4xx_ll_tim.h"
 #include "stm32f4xx_ll_usart.h"
 #include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_i2c.h"
 #include "stdbool.h"
 
 /* Private includes ----------------------------------------------------------*/

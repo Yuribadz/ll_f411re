@@ -8,7 +8,7 @@
 
 
 device_config_t* devices[DEVICES_NUM] = {
-		&button, &leds, &debug_usart
+		&button, &leds, &debug_usart, &i2c1_device
 };
 
 
@@ -24,6 +24,13 @@ uint8_t init(void) {
 	{
 		devices[i]->init_Device();
 	}
+	uint8_t buffer[1] = {0x21};
+	Handle_I2C_Master(0x70,buffer, 1);
+	buffer[0] = 0x81;
+	Handle_I2C_Master(0x70,buffer, 1);
+	LL_mDelay(500);
+	buffer[0] = 0x80;
+	Handle_I2C_Master(0x70,buffer, 1);
 	TIM4_Init();
 	osKernelInitialize();
 	rotaryUpdateHandle = osThreadNew(rotaryUpdateTask, NULL, &rotaryUpdate_attributes);

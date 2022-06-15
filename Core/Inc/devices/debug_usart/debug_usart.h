@@ -26,7 +26,6 @@ extern device_config_t debug_usart;
 extern uint8_t debug_usart_init(void);
 extern uint8_t debug_usart_deinit(void);
 extern uint8_t debug_send_msg(const char* msg);
-void DMA1_Stream5_IRQHandler(void);
 void DMA1_Stream6_IRQHandler(void);
 
 #endif /* INC_DEVICES_DEBUG_USART_DEBUG_USART_H_ */

@@ -13,7 +13,7 @@
 
 /* Definitions for rotaryUpdate */
 osThreadId_t rotaryUpdateHandle;
-uint32_t rotaryUpdateBuffer[ 64 ];
+uint32_t rotaryUpdateBuffer[ 256 ];
 osStaticThreadDef_t rotaryUpdateControlBlock;
 const osThreadAttr_t rotaryUpdate_attributes = {
   .name = "rotaryUpdate",

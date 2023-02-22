@@ -20,9 +20,7 @@ uint8_t debug_usart_init(void) {
 	usart2_tx_dma_current_len = 0U;
 	memset((void*)usart2_tx_buff_data, 0, 1024);
 	LL_USART_InitTypeDef USART_InitStruct = { 0 };
-
 	LL_GPIO_InitTypeDef GPIO_InitStruct = { 0 };
-
 	/* Init with LL driver */
 	/* DMA controller clock enable */
 	if ((LL_APB1_GRP1_IsEnabledClock(LL_AHB1_GRP1_PERIPH_DMA1) == false)) {

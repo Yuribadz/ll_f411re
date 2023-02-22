@@ -5,8 +5,8 @@
  *      Author: yurib
  */
 
-#ifndef INC_FREERTOS_TASKS_H_
-#define INC_FREERTOS_TASKS_H_
+#ifndef INC_FREERTOS_PROJECT_TASKS_H_
+#define INC_FREERTOS_PROJECT_TASKS_H_
 #include "main.h"
 #include "cmsis_os.h"
 #include "usart_lib.h"
@@ -32,4 +32,4 @@ extern void rotaryUpdateTask(void *argument);
 extern void displayTask(void *argument);
 extern void espTask(void *argument);
 extern void outputTask(void *argument);
-#endif /* INC_FREERTOS_TASKS_H_ */
+#endif /* INC_FREERTOS_PROJECT_TASKS_H_ */

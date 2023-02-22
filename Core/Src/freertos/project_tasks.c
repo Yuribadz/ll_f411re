@@ -5,7 +5,7 @@
  *      Author: yurib
  */
 
-#include "tasks.h"
+#include <project_tasks.h>
 #include <stdio.h>
 #include "generic_led.h"
 #include "debug_usart.h"

@@ -1,0 +1,127 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="ll_f411re" target="8" version="2">
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="Debug External"
+    inherited_configurations="External GNU;Debug" />
+  <configuration
+    Name="External GNU"
+    build_toolchain_directory="C:/ST/STM32CubeIDE_1.6.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.100.202210260954/tools/bin"
+    hidden="Yes" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 2"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 2 balanced"
+    hidden="Yes" />
+  <configuration
+    Name="Release External"
+    inherited_configurations="External GNU;Release" />
+  <project Name="ll_f411re">
+    <configuration
+      Name="Common"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="RX 08000000,00080000,FFFFFFFF;RWX 20000000,00020000,CDCDCDCD"
+      arm_target_device_name="STM32F411RE"
+      arm_target_interface_type="SWD"
+      debug_start_from_entry_point_symbol="No"
+      debug_target_connection="J-Link"
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00080000;RAM1 RWX 0x20000000 0x00020000"
+      project_directory=""
+      project_type="Externally Built Executable" />
+    <configuration
+      Name="Debug"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="RX 08000000,00080000,FFFFFFFF;RWX 20000000,00020000,CDCDCDCD"
+      arm_target_device_name="STM32F411RE"
+      c_preprocessor_definitions="DEBUG;USE_FULL_LL_DRIVER;STM32F411xE"
+      c_user_include_directories="$(ProjectDir)/Core/Inc;$(ProjectDir)/Drivers/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/include;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F;$(ProjectDir)/Drivers/CMSIS/Device/ST/STM32F4xx/Include;$(ProjectDir)/Drivers/CMSIS/Include;$(ProjectDir)/Core/Inc/devices;$(ProjectDir)/Core/Inc/freertos;$(ProjectDir)/Core/Inc/init;$(ProjectDir)/Core/Inc/lib;$(ProjectDir)/Core/Inc/periph;$(ProjectDir)/Middlewares/SEGGER/SystemView/SEGGER;$(ProjectDir)/Middlewares/SEGGER/SystemView/Config;$(ProjectDir)/Core/Inc/devices/button;$(ProjectDir)/Core/Inc/devices/debug_usart;$(ProjectDir)/Core/Inc/devices/iic_devices;$(ProjectDir)/Core/Inc/devices/led"
+      gcc_debugging_level="Level 3"
+      gcc_optimization_level="Optimize For Size"
+      linker_additional_files=""
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00080000;RAM1 RWX 0x20000000 0x00020000" />
+    <configuration
+      Name="Debug External"
+      THREAD_SCRIPT="FreeRTOS CM4"
+      armgnu_cl_cpu="cortex-m4"
+      armgnu_cl_fpabi="hard"
+      armgnu_cl_fpu="fpv4-sp-d16"
+      asm_additional_options_backup=";-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16"
+      build_intermediate_directory="Debug"
+      build_output_directory="Debug"
+      build_output_file_name="Debug/ll_f411re.elf"
+      c_additional_options_backup=";-g3;-Os;-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16"
+      debug_threads_script="$(StudioDir)/samples/FreeRTOSPlugin_CM4.js"
+      gcc_cl_enable_debug_info="Level 3"
+      gcc_cl_optimization_level="Size"
+      link_additional_options_backup=";-Wl,--gc-sections;-lm;--specs=nosys.specs;--specs=nano.specs;-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16"
+      link_linker_script_file="$(ProjectDir)//STM32F411RETX_FLASH.ld"
+      link_use_linker_script_file="Yes"
+      linker_additional_options="-Wl,--gc-sections;-lm;--specs=nosys.specs;--specs=nano.specs"
+      speed="0" />
+    <configuration
+      BUILD_OPTIONS="ARM GNU"
+      Name="External GNU"
+      armgnu_cl_cpu="cortex-m4"
+      armgnu_cl_endian="little"
+      armgnu_cl_fpu="fpv4-sp-d16"
+      build_generic_options_file_name="$(StudioDir)/targets/ARMGNU_build_options.xml" />
+    <configuration
+      Name="Release"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_simulator_memory_simulation_parameter="RX 08000000,00080000,FFFFFFFF;RWX 20000000,00020000,CDCDCDCD"
+      arm_target_device_name="STM32F411RE"
+      c_preprocessor_definitions="USE_FULL_LL_DRIVER;STM32F411xE;USE_HAL_DRIVER"
+      c_user_include_directories="$(ProjectDir)/Core/Inc;$(ProjectDir)/Drivers/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/include;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;$(ProjectDir)/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F;$(ProjectDir)/Drivers/CMSIS/Device/ST/STM32F4xx/Include;$(ProjectDir)/Drivers/CMSIS/Include"
+      gcc_debugging_level="None"
+      gcc_optimization_level="Optimize For Size"
+      linker_additional_files=""
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00080000;RAM1 RWX 0x20000000 0x00020000" />
+    <configuration
+      Name="Release External"
+      asm_additional_options=";-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16"
+      build_intermediate_directory="Release"
+      build_output_directory="Release"
+      build_output_file_name="Release/ll_f411re.elf"
+      c_additional_options=";-g0;-Os;-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16"
+      link_linker_script_file="$(ProjectDir)//STM32F411RETX_FLASH.ld"
+      link_use_linker_script_file="Yes"
+      linker_additional_options=";-Wl,--gc-sections;-lm;--specs=nosys.specs;--specs=nano.specs;-mcpu=cortex-m4;-mfloat-abi=hard;-mfpu=fpv4-sp-d16" />
+    <folder
+      Name="Core"
+      exclude="Core/;*_PP.s;*_PP.c"
+      filter="*.c;*.h;*.cpp;*.hpp;*.s;*.S"
+      path="Core"
+      recurse="Yes" />
+    <folder
+      Name="Drivers"
+      exclude="Drivers/;*_PP.s;*_PP.c"
+      filter="*.c;*.h;*.cpp;*.hpp;*.s;*.S"
+      path="Drivers"
+      recurse="Yes" />
+    <folder
+      Name="Middlewares"
+      exclude="Middlewares/;*_PP.s;*_PP.c"
+      filter="*.c;*.h;*.cpp;*.hpp;*.s;*.S"
+      path="Middlewares"
+      recurse="Yes" />
+    <folder Name="Source Files" />
+  </project>
+</solution>
